@@ -38,7 +38,7 @@ class CoinDataService {
                 return output.data
             }
             .receive(on: DispatchQueue.main)
-            .decode(type: [CoinModel].self, decoder: JSONDecoder())
+            .decode(type: [CoinModel].self, decoder: jsonDecoder)
             .sink { (completion) in
                 switch completion {
                 case .finished:
@@ -50,5 +50,11 @@ class CoinDataService {
                 self?.allCoins = returnedCoins
                 self?.coinSubscription?.cancel()
             }
+    }
+
+    private var jsonDecoder: JSONDecoder {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        return decoder
     }
 }
