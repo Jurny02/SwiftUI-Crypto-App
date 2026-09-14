@@ -17,9 +17,9 @@ class NetworkingManager {
             switch self {
 
             case .badUrlResponse(let url):
-                "badUrlResponse with\(url)"
+                "[⁉️] badUrlResponse with\(url)"
             case .unknown:
-                "unknown"
+                "[?] unknown"
             }
         }
 
