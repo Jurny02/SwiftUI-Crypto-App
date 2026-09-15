@@ -25,7 +25,7 @@ class CoinImageViewModel: ObservableObject {
     }
 
     private func addSubscriber() {
-        dataService.$coinImage
+        dataService.$image
             .sink { [weak self] _ in
                 self?.isLoading = false
             } receiveValue: { [weak self] returnedImagw in
