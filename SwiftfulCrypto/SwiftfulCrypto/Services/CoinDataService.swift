@@ -26,16 +26,10 @@ class CoinDataService {
         }
 
         coinSubscription = NetworkingManager.download(url: url)
-            .decode(type: [CoinModel].self, decoder: jsonDecoder)
+            .decode(type: [CoinModel].self, decoder: JSONDecoder.fromSnakeCase)
             .sink(receiveCompletion: NetworkingManager.handleCompletion) { [weak self] (returnedCoins) in
                 self?.allCoins = returnedCoins
                 self?.coinSubscription?.cancel()
             }
-    }
-
-    private var jsonDecoder: JSONDecoder {
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        return decoder
     }
 }
