@@ -40,7 +40,6 @@ struct CoinRowView_Previews: PreviewProvider {
     }
 }
 
-
 extension CoinRowView {
     private var leftColumn: some View {
         HStack(spacing: 0) {
